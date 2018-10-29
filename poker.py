@@ -15,7 +15,7 @@ class Card(object):
         return self.rank
 
     def __str__(self):
-        return "%s%s" %(self.rank, self.suit)
+        return "%s%s" % (self.rank, self.suit)
 
 
 class Deck(object):
@@ -57,31 +57,13 @@ class Hand(object):
                     return True
         return False
 
-    def is_three(self):
-        for i in range(5):
-            for j in range(i+1, 5):
-                for k in range(j+1, 5):
-                    if self.cards[i].get_rank() == self.cards[j].get_rank() and self.cards[i].get_rank() == self.cards[k].get_rank():
-                        return True
-        return False
+
+
 
 new_deck = Deck()
-print(new_deck)
 new_deck.shuffle()
 print(new_deck)
-print("Taking out a card:", str(new_deck.take_one()))
-count = 0
-while True:
-    count += 1
-    new_deck = Deck()
-    new_deck.shuffle()
-    hand = Hand(new_deck)
-    if hand.is_three():
-        print("we have three of a kind, took us %s tries:" % count)
-        print(hand)
-        break
-    if count % 1000 == 0:
-        print(str(count) + "tries")
-
+hand = Hand(new_deck)
+print(hand)
 
 
