@@ -57,13 +57,63 @@ class Hand(object):
                     return True
         return False
 
+    def threekind(self):
+        for i in range(5):
+            for j in range(i+1, 5):
+                for z in range(j + 1, 5):
+                    if self.cards[i].get_rank() == self.cards[j].get_rank() == self.cards[z].get_rank():
+                        return True
+        return False
 
 
+    def fourkind(self):
+        for i in range(5):
+            for j in range(i+1, 5):
+                for z in range(j + 1, 5):
+                    for y in range(z+1, 5):
+                        if self.cards[i].get_rank() == self.cards[j].get_rank() == self.cards[z].get_rank() == self.cards[y].get_rank():
+                            return True
+        return False
+
+    def twopairs(self):
+        twop = 0
+        for i in range(5):
+            for j in range(i + 1, 5):
+                if self.cards[i].get_rank() == self.cards[j].get_rank():
+                    twop += 1
+                if twop == 2:
+                    return True
+        return False
+
+    #def straight(self):
+        #for i in range (5):
+            #for j in range (i+1,5):
+                #if self.cards[i].get_rank()
+
+    def flush(self):
+        for i in range (5):
+            if self.cards[0].get_suit()==self.cards[1].get_suit()==self.cards[2].get_suit()==self.cards[3].get_suit()==self.cards[4].get_suit():
+                return True
+        return False
 
 new_deck = Deck()
 new_deck.shuffle()
 print(new_deck)
-hand = Hand(new_deck)
-print(hand)
+for i in range(10000):
+    #new_deck = Deck()
+    #new_deck.shuffle()
+    #print(new_deck)
+    hand = Hand(new_deck)
+    print("\n", hand)
+
+    print("Pairs in hand?", hand.is_pair())
+    print("Three of a kind in hand?", hand.threekind())
+    print("Four of a kind in hand?", hand.fourkind())
+    print("Two pairs in hand?", hand.twopairs())
+    print("Flush in hand?", hand.flush())
+    #print("Two pairs in hand?", hand.twopairs())
+    #print("Two pairs in hand?", hand.twopairs())
+
+
 
 
