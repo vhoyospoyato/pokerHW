@@ -96,13 +96,11 @@ class Hand(object):
                 return True
         return False
 
-new_deck = Deck()
-new_deck.shuffle()
-print(new_deck)
+
 for i in range(10000):
-    #new_deck = Deck()
-    #new_deck.shuffle()
-    #print(new_deck)
+    new_deck = Deck()
+    new_deck.shuffle()
+    print(new_deck)
     hand = Hand(new_deck)
     print("\n", hand)
 
